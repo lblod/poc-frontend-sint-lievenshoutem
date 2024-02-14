@@ -12,6 +12,12 @@ module.exports = function (defaults) {
     },
   });
 
+  app.options['ember-cli-proxy'] = {
+    enabled: true,
+    proxyHost: 'https://lokaalbeslist.vlaanderen.be/',
+    proxyPath: '/api',
+  };
+
   const { Webpack } = require('@embroider/webpack');
 
   const embroiderOptions = {
