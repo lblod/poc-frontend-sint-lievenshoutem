@@ -7,9 +7,7 @@ export default class Router extends EmbroiderRouter {
 }
 
 Router.map(function () {
-  this.route('home', { path: '/' });
-
-  this.route('agenda-items', { path: '/agendapunten' }, function () {
+  this.route('agenda-items', { path: '/' }, function () {
     this.route('agenda-item', { path: '/:id' });
     this.route('session', { path: '/:id/zitting' });
   });

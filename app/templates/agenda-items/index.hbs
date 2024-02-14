@@ -147,17 +147,21 @@
         </a>
       </div>
       <div class="c-interface__sidebar-main">
+        <img
+          src="https://www.sint-lievens-houtem.be/images/skin/logo.svg"
+          alt="sint-lievens-houtem-logo"
+        />
         <h3 class="au-u-h4 au-u-medium">Verfijn de zoekresultaten</h3>
         <Filters::SelectMultipleFilter
-          @id="municipality"
-          @label="Kies één of meer besturen"
-          @options={{this.localGovernmentGroupOptions}}
-          @selected={{this.governmentList.selectedLocalGovernments}}
-          @updateSelected={{this.updateSelectedGovernment}}
-          @noMatchesMessage="Geen besturen gevonden"
+          @selected={{this.governingBodyList.selectedGoverningBodyClassifications}}
+          @updateSelected={{this.updateSelectedGoverningBodyClassifications}}
+          @id="governing-body"
+          @label="Kies één of meer bestuursorganen"
+          @noMatchesMessage="Geen bestuursorganen gevonden"
+          @options={{this.governingBodies}}
           @searchField="label"
-          @queryParam="gemeentes+provincies"
-          @placeholder="Alle besturen"
+          @queryParam="bestuursorganen"
+          @placeholder="Alle bestuursorganen"
         />
         <Filters::DateRangeFilter
           @startQueryParam="begin"
@@ -165,27 +169,6 @@
           @start={{this.plannedStartMin}}
           @end={{this.plannedStartMax}}
         />
-        <section class="c-advanced-filter-holder">
-          <Accordion
-            @defaultOpen={{this.showAdvancedFilters}}
-            @iconOpen="nav-up"
-            @iconClosed="nav-down"
-            @buttonLabel="Geavanceerde filters"
-          >
-            <Filters::SelectMultipleFilter
-              @selected={{this.governingBodyList.selectedGoverningBodyClassifications}}
-              @updateSelected={{this.updateSelectedGoverningBodyClassifications}}
-              @id="governing-body"
-              @label="Kies één of meer bestuursorganen"
-              @noMatchesMessage="Geen bestuursorganen gevonden"
-              @options={{this.governingBodies}}
-              @searchField="label"
-              @queryParam="bestuursorganen"
-              @placeholder="Alle bestuursorganen"
-            />
-
-          </Accordion>
-        </section>
       </div>
       <div class="c-interface__sidebar-submit-buttons">
         <AuButton @skin="primary" @width="block" {{on "click" this.hideFilter}}>

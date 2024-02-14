@@ -4,6 +4,7 @@ import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { task } from 'ember-concurrency';
 import { Resource } from 'ember-resources';
+import CONSTANTS from 'frontend-burgernabije-besluitendatabank/config/constants';
 import AgendaItem from 'frontend-burgernabije-besluitendatabank/models/mu-search/agenda-item';
 import GoverningBodyListService from 'frontend-burgernabije-besluitendatabank/services/governing-body-list';
 import GovernmentListService from 'frontend-burgernabije-besluitendatabank/services/government-list';
@@ -311,6 +312,10 @@ const agendaItemsQuery = ({
 
   request.index = index;
 
+  // Apply optional filter for locationIds
+  const municipalityId: keyof typeof CONSTANTS = 'municipalityId';
+  filters[':terms:search_location_id'] = CONSTANTS[municipalityId];
+
   // Ensure search_location_id field is present
   filters[':has:search_location_id'] = 't';
 
@@ -321,11 +326,6 @@ const agendaItemsQuery = ({
     ] = `(session_planned_start:[${plannedStartMin} TO ${
       plannedStartMax || '*'
     }] ) `;
-  }
-
-  // Apply optional filter for locationIds
-  if (locationIds) {
-    filters[':terms:search_location_id'] = locationIds;
   }
 
   // Apply optional filter for governing body ids

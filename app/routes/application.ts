@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import type PlausibleService from 'ember-plausible/services/plausible';
+import CONSTANTS from 'frontend-burgernabije-besluitendatabank/config/constants';
 import config from 'frontend-burgernabije-besluitendatabank/config/environment';
 
 export default class ApplicationRoute extends Route {
@@ -8,6 +9,13 @@ export default class ApplicationRoute extends Route {
 
   beforeModel(): void {
     this.startAnalytics();
+  }
+
+  model(): unknown {
+    const municipalityName = CONSTANTS['appName'];
+    return {
+      municipalityName,
+    };
   }
 
   startAnalytics(): void {

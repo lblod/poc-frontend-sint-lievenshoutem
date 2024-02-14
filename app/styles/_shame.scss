@@ -1,5 +1,104 @@
 @use "sass:map";
 
+// municipality specific stuff
+* {
+  font-family: "Maven Pro", sans-serif !important;
+
+  &::selection {
+    background-color: var(--primary-color);
+    color: var(--secondary);
+  }
+}
+
+// set root variable for red
+:root {
+  --primary-color: #99a215;
+  --primary-color-hover: #737925;
+  --primary-color-translucent: #fbfaf4;
+  --secondary: #fff;
+  --text: black;
+}
+
+.au-c-badge--brand {
+  background-color: var(--primary-color);
+  color: var(--secondary);
+}
+
+.c-interface__sidebar,
+.au-c-toolbar--tint {
+  background-color: var(--primary-color-translucent);
+}
+
+.au-c-button--secondary {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+
+  &:hover {
+    border-color: var(--primary-color-hover);
+    color: var(--primary-color-hover);
+  }
+}
+
+.au-c-button.au-c-button--primary {
+  background-color: var(--primary-color);
+  color: var(--secondary);
+  border-color: var(--primary-color);
+
+  &:hover {
+    background-color: var(--primary-color-hover);
+    border-color: var(--primary-color-hover);
+  }
+}
+
+.au-c-link,
+.au-c-button--naked {
+  color: var(--text) !important;
+  text-decoration-color: var(--text) !important;
+  font-weight: 500;
+
+  &:hover {
+    color: var(--primary-color) !important;
+    text-decoration-color: var(--primary-color) !important;
+  }
+
+  &:focus {
+    outline: var(--primary-color) 0.3rem solid;
+  }
+}
+
+.au-c-brand__logo {
+  height: 10rem !important;
+  width: 10rem !important;
+}
+
+// <input type="date"> fixes for Safari
+.au-c-input {
+  // We don't set a background color, and safari uses a different one on iOS
+  background-color: var(--au-white);
+}
+
+.au-c-input:focus,
+.ember-power-select-trigger:focus,
+.ember-power-select-trigger--active {
+  border-color: var(--primary-color) !important;
+  box-shadow: var(--primary-color) 0 0 0 1px !important;
+}
+
+.ember-power-select-option[aria-current="true"] {
+  color: var(--primary-color);
+}
+
+.ember-power-select-option[aria-selected="true"],
+.ember-power-select-option[aria-current="true"] {
+  &::after {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%2399a215" viewBox="0 0 24 24"><g class="check"><path d="M10.695 17L5 12.553l1.424-1.872 3.796 3.042L17.102 6 19 7.404 10.695 17z" class="Vector"/></g></svg>') !important;
+  }
+}
+
+.au-c-button--link {
+  color: var(--text) !important;
+}
+
 // with name JSD widget
 iframe[name*="JSD widget"] {
   bottom: 100px !important;
@@ -88,7 +187,7 @@ cursor {
 
 // Yellow top border
 .u-color-top-border {
-  border-top: solid 0.5rem var(--au-yellow-300);
+  border-top: solid 0.5rem var(--primary-color);
 }
 
 .u-gray-top-border {
@@ -111,6 +210,7 @@ cursor {
 
     .au-c-icon {
       margin-top: 0 !important;
+      color: var(--primary-color);
     }
 
     .au-c-button--link {
@@ -270,12 +370,6 @@ cursor {
     margin-left: 0;
     padding-left: 0;
   }
-}
-
-// <input type="date"> fixes for Safari
-.au-c-input {
-  // We don't set a background color, and safari uses a different one on iOS
-  background-color: var(--au-white);
 }
 
 .ember-power-select-group-name {
