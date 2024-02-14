@@ -14,7 +14,7 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build --environment=production",
+    "build": "ember build --environment=production --proxy=https://lokaalbeslist.vlaanderen.be/",
     "build:analyze-bundle": "ANALYZE_BUNDLE=true EMBROIDER_CONCAT_STATS=true ember build --environment=production",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:css": "stylelint \"**/*.scss\"",
