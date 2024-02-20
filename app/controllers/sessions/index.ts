@@ -21,6 +21,7 @@ import {
   parseMuSearchAttributeToString,
   parseMuSearchAttributeToDate,
 } from 'frontend-burgernabije-besluitendatabank/utils/mu-search-data-format';
+import RouterService from '@ember/routing/router-service';
 
 interface SessionsParams {
   municipalityLabels: string;
@@ -161,7 +162,10 @@ export default class SessionsIndexController extends Controller {
   @tracked provinceLabels = '';
   @tracked plannedStartMin = '';
   @tracked plannedStartMax = '';
+  @tracked keyword = '';
   @tracked governingBodyClassifications = '';
+
+  @service declare router: RouterService;
 
   get showAdvancedFilters() {
     return this.governingBodyClassifications.length > 0;
@@ -209,7 +213,11 @@ export default class SessionsIndexController extends Controller {
   }
 
   updateKeyword = (value: string) => {
-    console.log('updating keyword', value);
+    console.log(value);
+    console.log('updating keyword', this.keyword);
+    this.router.transitionTo('agenda-items', {
+      queryParams: { trefwoord: value },
+    });
   };
 
   showFilter = () => {

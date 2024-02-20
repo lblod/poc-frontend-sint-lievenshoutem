@@ -7,6 +7,7 @@ export interface Signature {
     id: string;
     queryParam: string;
     value: string;
+    route: string;
   };
 }
 
@@ -22,8 +23,11 @@ export default class TextFilterComponent extends FilterComponent<Signature> {
   handleSubmit(event: Event) {
     event.preventDefault();
 
-    this.updateQueryParams({
-      [this.args.queryParam]: this.value,
-    });
+    this.updateQueryParams(
+      {
+        [this.args.queryParam]: this.value,
+      },
+      this.args.route
+    );
   }
 }
