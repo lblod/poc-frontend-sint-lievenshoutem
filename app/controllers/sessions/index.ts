@@ -375,13 +375,11 @@ const dataMapping: DataMapper<SessionMuSearchEntry, Session> = (
   dataResponse.governingBodyClassificationName = parseMuSearchAttributeToString(
     entry.governing_body_classification_name
   );
-  dataResponse.sessionPlannedStart = parseMuSearchAttributeToDate(
+  dataResponse.plannedStart = parseMuSearchAttributeToDate(
     entry.session_planned_start
   );
-  dataResponse.sessionEndedAt = parseMuSearchAttributeToDate(
-    entry.session_ended_at
-  );
-  dataResponse.sessionStartedAt = parseMuSearchAttributeToDate(
+  dataResponse.endedAt = parseMuSearchAttributeToDate(entry.session_ended_at);
+  dataResponse.startedAt = parseMuSearchAttributeToDate(
     entry.session_started_at
   );
 

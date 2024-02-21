@@ -10,16 +10,16 @@ export default class SessionModel {
   declare governingBodyName?: string;
   declare abstractGoverningBodyClassificationName?: string;
   declare governingBodyClassificationName?: string;
-  declare sessionPlannedStart?: Date;
-  declare sessionStartedAt?: Date;
-  declare sessionEndedAt?: Date;
+  declare plannedStart?: Date;
+  declare startedAt?: Date;
+  declare endedAt?: Date;
 
   get dateFormatted() {
-    if (this.sessionStartedAt || this.sessionEndedAt) {
-      return getFormattedDateRange(this.sessionStartedAt, this.sessionEndedAt);
+    if (this.startedAt || this.endedAt) {
+      return getFormattedDateRange(this.startedAt, this.endedAt);
     }
-    if (this.sessionPlannedStart) {
-      return 'Gepland op ' + getFormattedDate(this.sessionPlannedStart);
+    if (this.plannedStart) {
+      return 'Gepland op ' + getFormattedDate(this.plannedStart);
     }
 
     return 'Geen Datum';
